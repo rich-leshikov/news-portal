@@ -1,18 +1,7 @@
 import {FC} from 'react'
+import {NewsItem, NewsItemType} from '../news-item'
 
 import styles from './NewsList.module.scss'
-
-export type NewsItemType = {
-	author: string
-	category?: unknown[]
-	description?: string
-	id: string
-	image?: string
-	language?: string
-	published: string
-	title: string
-	url: string
-}
 
 type Props = {
 	news?: NewsItemType[]
@@ -21,7 +10,7 @@ type Props = {
 export const NewsList: FC<Props> = ({news}) => {
 	return (
 		<div className={styles.list}>
-			{news?.map(item => <li key={item.id}>{item.title}</li>)}
+			{news?.map(item => <NewsItem key={item.id} item={item}/>)}
 		</div>
 	)
 }
