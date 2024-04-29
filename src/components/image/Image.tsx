@@ -3,7 +3,7 @@ import {FC} from 'react'
 import styles from './Image.module.scss'
 
 type Props = {
-	image: string
+	image?: string
 }
 
 export const Image: FC<Props> = ({image}) => {
