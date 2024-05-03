@@ -53,6 +53,13 @@ export const Main = () => {
 				onPageNumber={handlePageNumber}
 			/>
 			{!isLoading ? <NewsList news={news}/> : <Skeleton count={10} type={'item'}/>}
+			<Pagination
+				totalPages={totalPages}
+				currentPage={currentPage}
+				onPreviousPage={handlePreviousPage}
+				onNextPage={handleNextPage}
+				onPageNumber={handlePageNumber}
+			/>
 		</main>
 	)
 }
