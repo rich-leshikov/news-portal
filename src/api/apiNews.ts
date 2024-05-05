@@ -7,7 +7,7 @@ export type NewsType = {
 	page_number: number
 	page_size: number
 	category: string | null
-	keywords: string[] | null
+	keywords: string | null
 }
 
 export const getNews = async ({page_number = 1, page_size = 10, category, keywords}: NewsType) => {
