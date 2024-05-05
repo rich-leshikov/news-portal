@@ -1,6 +1,7 @@
 import {FC} from 'react'
 import {formatTimeAgo} from '../../shared'
 import {Image} from '../image'
+import {withSkeleton} from '../../shared'
 
 import styles from './NewsBanner.module.scss'
 
@@ -15,7 +16,7 @@ type Props = {
 	item: BannerType
 }
 
-export const NewsBanner: FC<Props> = ({item}) => {
+const NewsBanner: FC<Props> = ({item}) => {
 	return (
 		<div className={styles.banner}>
 			<Image image={item.image}/>
@@ -26,3 +27,5 @@ export const NewsBanner: FC<Props> = ({item}) => {
 		</div>
 	)
 }
+
+export const NewsBannerWithSkeleton = withSkeleton(NewsBanner, 'banner', 1)

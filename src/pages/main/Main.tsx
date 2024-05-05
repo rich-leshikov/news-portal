@@ -1,6 +1,6 @@
 import {useEffect, useState} from 'react'
 import {getCategories, getNews} from '../../api'
-import {Categories, NewsBanner, NewsList, Pagination, Search, Skeleton} from '../../components'
+import {Categories, NewsBannerWithSkeleton, NewsListWithSkeleton, Pagination, Search} from '../../components'
 import {PAGE_SIZE, TOTAL_PAGES} from '../../constants'
 import {useDebounce} from '../../shared'
 
@@ -73,7 +73,7 @@ export const Main = () => {
 				setSelectedCategory={setSelectedCategory}
 			/>
 			<Search keywords={keywords} setKeywords={setKeywords}/>
-			{news.length > 0 && !isLoading ? <NewsBanner item={news[0]}/> : <Skeleton count={1} type={'banner'}/>}
+			<NewsBannerWithSkeleton isLoading={isLoading} item={news.length > 0 && news[0]}/>
 			<Pagination
 				totalPages={TOTAL_PAGES}
 				currentPage={currentPage}
@@ -81,7 +81,7 @@ export const Main = () => {
 				onNextPage={handleNextPage}
 				onPageNumber={handlePageNumber}
 			/>
-			{!isLoading ? <NewsList news={news}/> : <Skeleton count={10} type={'item'}/>}
+			<NewsListWithSkeleton isLoading={isLoading} news={news}/>
 			<Pagination
 				totalPages={TOTAL_PAGES}
 				currentPage={currentPage}
