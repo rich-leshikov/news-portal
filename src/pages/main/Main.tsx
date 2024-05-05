@@ -1,6 +1,7 @@
 import {useEffect, useState} from 'react'
 import {getCategories, getNews} from '../../api'
 import {Categories, NewsBanner, NewsList, Pagination, Search, Skeleton} from '../../components'
+import {useDebounce} from '../../shared'
 
 import styles from './Main.module.scss'
 
@@ -13,6 +14,8 @@ export const Main = () => {
 	const [currentPage, setCurrentPage] = useState<number>(1)
 	const totalPages = 10
 	const pageSize = 10
+
+	const debouncedKeywords = useDebounce(keywords, 1500)
 
 	const fetchCategories = async () => {
 		try {
@@ -30,7 +33,7 @@ export const Main = () => {
 				page_number: currentPage,
 				page_size: pageSize,
 				category: selectedCategory === 'all' ? null : selectedCategory,
-				keywords: keywords
+				keywords
 			})
 			setIsLoading(false)
 			setNews(response.news)
@@ -45,7 +48,7 @@ export const Main = () => {
 
 	useEffect(() => {
 		fetchNews(currentPage)
-	}, [currentPage, selectedCategory, keywords])
+	}, [currentPage, selectedCategory, debouncedKeywords])
 
 	const handlePreviousPage = () => {
 		if (currentPage > 1) {
