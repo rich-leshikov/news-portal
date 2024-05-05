@@ -1,6 +1,7 @@
 import {useEffect, useState} from 'react'
 import {getCategories, getNews} from '../../api'
 import {Categories, NewsBanner, NewsList, Pagination, Search, Skeleton} from '../../components'
+import {PAGE_SIZE, TOTAL_PAGES} from '../../constants'
 import {useDebounce} from '../../shared'
 
 import styles from './Main.module.scss'
@@ -12,8 +13,6 @@ export const Main = () => {
 	const [news, setNews] = useState([])
 	const [isLoading, setIsLoading] = useState(true)
 	const [currentPage, setCurrentPage] = useState<number>(1)
-	const totalPages = 10
-	const pageSize = 10
 
 	const debouncedKeywords = useDebounce(keywords, 1500)
 
@@ -31,7 +30,7 @@ export const Main = () => {
 			setIsLoading(true)
 			const response = await getNews({
 				page_number: currentPage,
-				page_size: pageSize,
+				page_size: PAGE_SIZE,
 				category: selectedCategory === 'all' ? null : selectedCategory,
 				keywords
 			})
@@ -57,7 +56,7 @@ export const Main = () => {
 	}
 
 	const handleNextPage = () => {
-		if (currentPage < totalPages) {
+		if (currentPage < TOTAL_PAGES) {
 			setCurrentPage(currentPage + 1)
 		}
 	}
@@ -76,7 +75,7 @@ export const Main = () => {
 			<Search keywords={keywords} setKeywords={setKeywords}/>
 			{news.length > 0 && !isLoading ? <NewsBanner item={news[0]}/> : <Skeleton count={1} type={'banner'}/>}
 			<Pagination
-				totalPages={totalPages}
+				totalPages={TOTAL_PAGES}
 				currentPage={currentPage}
 				onPreviousPage={handlePreviousPage}
 				onNextPage={handleNextPage}
@@ -84,7 +83,7 @@ export const Main = () => {
 			/>
 			{!isLoading ? <NewsList news={news}/> : <Skeleton count={10} type={'item'}/>}
 			<Pagination
-				totalPages={totalPages}
+				totalPages={TOTAL_PAGES}
 				currentPage={currentPage}
 				onPreviousPage={handlePreviousPage}
 				onNextPage={handleNextPage}
