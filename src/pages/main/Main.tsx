@@ -1,20 +1,35 @@
 import {useEffect, useState} from 'react'
-import {getNews} from '../../api'
-import {NewsBanner, NewsList, Pagination, Skeleton} from '../../components'
+import {getCategories, getNews} from '../../api'
+import {Categories, NewsBanner, NewsList, Pagination, Skeleton} from '../../components'
 
 import styles from './Main.module.scss'
 
 export const Main = () => {
+	const [categories, setCategories] = useState<string[]>([])
+	const [selectedCategory, setSelectedCategory] = useState<string>('all')
 	const [news, setNews] = useState([])
 	const [isLoading, setIsLoading] = useState(true)
 	const [currentPage, setCurrentPage] = useState<number>(1)
 	const totalPages = 10
 	const pageSize = 10
 
+	const fetchCategories = async () => {
+		try {
+			const response = await getCategories()
+			setCategories(['all', ...response.categories])
+		} catch (error) {
+			console.log(error)
+		}
+	}
+
 	const fetchNews = async (currentPage: number) => {
 		try {
 			setIsLoading(true)
-			const response = await getNews(currentPage, pageSize)
+			const response = await getNews({
+				page_number: currentPage,
+				page_size: pageSize,
+				category: selectedCategory === 'all' ? null : selectedCategory
+			})
 			setIsLoading(false)
 			setNews(response.news)
 		} catch (error) {
@@ -23,8 +38,12 @@ export const Main = () => {
 	}
 
 	useEffect(() => {
+		fetchCategories()
+	}, [])
+
+	useEffect(() => {
 		fetchNews(currentPage)
-	}, [currentPage])
+	}, [currentPage, selectedCategory])
 
 	const handlePreviousPage = () => {
 		if (currentPage > 1) {
@@ -44,6 +63,8 @@ export const Main = () => {
 
 	return (
 		<main className={styles.main}>
+			<Categories categories={categories} selectedCategory={selectedCategory}
+									setSelectedCategory={setSelectedCategory}/>
 			{news.length > 0 && !isLoading ? <NewsBanner item={news[0]}/> : <Skeleton count={1} type={'banner'}/>}
 			<Pagination
 				totalPages={totalPages}
