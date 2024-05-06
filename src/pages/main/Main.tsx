@@ -9,7 +9,7 @@ export const Main = () => {
 	const {filters, changeFilter} = useFilters({
 		page_number: 1,
 		page_size: PAGE_SIZE,
-		category: 'all',
+		category: null,
 		keywords: ''
 	})
 
