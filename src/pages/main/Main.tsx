@@ -1,5 +1,5 @@
 import {getCategories, getNews} from '../../api'
-import {Categories, NewsBanner, NewsListWithSkeleton, Pagination, Search} from '../../components'
+import {Categories, LatestNews, NewsListWithSkeleton, Pagination, Search} from '../../components'
 import {PAGE_SIZE, TOTAL_PAGES} from '../../constants'
 import {useDebounce, useFetch, useFilters} from '../../shared'
 
@@ -40,13 +40,14 @@ export const Main = () => {
 
 	return (
 		<main className={styles.main}>
+			<LatestNews banners={data && data.news} isLoading={isLoading}/>
 			{dataCategories ? <Categories
 				categories={dataCategories.categories}
 				selectedCategory={filters.category}
 				setSelectedCategory={(category) => changeFilter('category', category)}
 			/> : null}
 			<Search keywords={filters.keywords} setKeywords={(keywords) => changeFilter('keywords', keywords)}/>
-			<NewsBanner item={data && data.news && data.news[0]}/>
+			{/*<NewsBanner item={data && data.news && data.news[0]}/>*/}
 			<Pagination
 				totalPages={TOTAL_PAGES}
 				currentPage={filters.page_number}
