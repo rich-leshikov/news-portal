@@ -1,9 +1,9 @@
 import {useState} from 'react'
 
-type FiltersType = {
+export type FiltersType = {
 	page_number: number
 	page_size: number
-	category: string | null,
+	category: string | null
 	keywords: string
 }
 
