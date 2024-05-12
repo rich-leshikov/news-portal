@@ -1,8 +1,19 @@
-.list {
+.columnList {
   display: flex;
   flex-direction: column;
   gap: 12px;
+}
 
+.rowList {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 12px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.columnList,
+.rowList {
   .banner {
     padding-top: 100%;
     position: relative;
@@ -22,7 +33,7 @@
 
   @keyframes pulse {
     0% {
-      background-position: 0% 0%;
+      background-position: 0 0;
     }
     100% {
       background-position: -135% 0%;

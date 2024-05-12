@@ -18,4 +18,4 @@ const BannersList: FC<Props> = ({banners}) => {
 	)
 }
 
-export const BannersListWithSkeleton = withSkeleton(BannersList, 'banner', 6)
+export const BannersListWithSkeleton = withSkeleton(BannersList, 'banner', 12, 'row')
