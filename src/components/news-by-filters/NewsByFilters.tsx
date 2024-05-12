@@ -1,11 +1,10 @@
 import {FC} from 'react'
-import {Categories} from '../categories'
-import {Search} from '../search'
 import {Pagination} from '../pagination'
-import {TOTAL_PAGES} from '../../constants'
 import {NewsListWithSkeleton} from '../news-list'
-import {FiltersType, useFetch} from '../../shared'
-import {getCategories, NewsType} from '../../api'
+import {NewsFilters} from '../news-filters'
+import {NewsType} from '../../api'
+import {TOTAL_PAGES} from '../../constants'
+import {FiltersType} from '../../shared'
 
 import styles from './NewsByFilters.module.scss'
 
@@ -17,8 +16,6 @@ type Props = {
 }
 
 export const NewsByFilters: FC<Props> = ({filters, isLoading, news, changeFilter}) => {
-	const {data: dataCategories} = useFetch(getCategories)
-
 	const handlePreviousPage = () => {
 		if (filters.page_number > 1) {
 			changeFilter('page_number', filters.page_number - 1)
@@ -37,13 +34,7 @@ export const NewsByFilters: FC<Props> = ({filters, isLoading, news, changeFilter
 
 	return (
 		<section className={styles.section}>
-			{dataCategories ? <Categories
-				categories={dataCategories.categories}
-				selectedCategory={filters.category}
-				setSelectedCategory={(category) => changeFilter('category', category)}
-			/> : null}
-			<Search keywords={filters.keywords} setKeywords={(keywords) => changeFilter('keywords', keywords)}/>
-			{/*<NewsBanner item={data && data.news && data.news[0]}/>*/}
+			<NewsFilters filters={filters} changeFilter={changeFilter}/>
 			<Pagination
 				totalPages={TOTAL_PAGES}
 				currentPage={filters.page_number}
