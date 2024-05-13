@@ -2,7 +2,7 @@ import {FC} from 'react'
 
 import styles from './Pagination.module.scss'
 
-type Props = {
+export type PaginationProps = {
 	totalPages: number
 	currentPage: number
 	onPreviousPage: () => void
@@ -10,7 +10,7 @@ type Props = {
 	onPageNumber: (pageNumber: number) => void
 }
 
-export const Pagination: FC<Props> = ({totalPages = 10, currentPage, onPreviousPage, onNextPage, onPageNumber}) => {
+export const Pagination: FC<PaginationProps> = ({totalPages = 10, currentPage, onPreviousPage, onNextPage, onPageNumber}) => {
 	return (
 		<div className={styles.pagination}>
 			<button
