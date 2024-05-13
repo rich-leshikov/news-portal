@@ -1,4 +1,3 @@
-import {Pagination} from '../pagination'
 import {NewsListWithSkeleton} from '../news-list'
 import {NewsFilters} from '../news-filters'
 import {getNews} from '../../api'
@@ -6,6 +5,7 @@ import {PAGE_SIZE, TOTAL_PAGES} from '../../constants'
 import {useDebounce, useFetch, useFilters} from '../../shared'
 
 import styles from './NewsByFilters.module.scss'
+import {PaginationWrapper} from '../pagination-wrapper';
 
 export const NewsByFilters = () => {
 	const {filters, changeFilter} = useFilters({
@@ -41,21 +41,17 @@ export const NewsByFilters = () => {
 	return (
 		<section className={styles.section}>
 			<NewsFilters filters={filters} changeFilter={changeFilter}/>
-			<Pagination
+			<PaginationWrapper
+				top={true}
+				bottom={true}
 				totalPages={TOTAL_PAGES}
 				currentPage={filters.page_number}
 				onPreviousPage={handlePreviousPage}
 				onNextPage={handleNextPage}
 				onPageNumber={handlePageNumber}
-			/>
-			<NewsListWithSkeleton isLoading={isLoading} news={data?.news}/>
-			<Pagination
-				totalPages={TOTAL_PAGES}
-				currentPage={filters.page_number}
-				onPreviousPage={handlePreviousPage}
-				onNextPage={handleNextPage}
-				onPageNumber={handlePageNumber}
-			/>
+			>
+				<NewsListWithSkeleton isLoading={isLoading} news={data?.news}/>
+			</PaginationWrapper>
 		</section>
 	)
 }
