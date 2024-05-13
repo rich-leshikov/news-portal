@@ -1,21 +1,27 @@
-import {FC} from 'react'
 import {Pagination} from '../pagination'
 import {NewsListWithSkeleton} from '../news-list'
 import {NewsFilters} from '../news-filters'
-import {NewsType} from '../../api'
-import {TOTAL_PAGES} from '../../constants'
-import {FiltersType} from '../../shared'
+import {getNews} from '../../api'
+import {PAGE_SIZE, TOTAL_PAGES} from '../../constants'
+import {useDebounce, useFetch, useFilters} from '../../shared'
 
 import styles from './NewsByFilters.module.scss'
 
-type Props = {
-	news: NewsType
-	filters: FiltersType
-	isLoading: boolean
-	changeFilter: (key: string, value: number | string | null) => void
-}
+export const NewsByFilters = () => {
+	const {filters, changeFilter} = useFilters({
+		page_number: 1,
+		page_size: PAGE_SIZE,
+		category: null,
+		keywords: ''
+	})
 
-export const NewsByFilters: FC<Props> = ({filters, isLoading, news, changeFilter}) => {
+	const debouncedKeywords = useDebounce(filters.keywords, 1500)
+
+	const {data, isLoading} = useFetch(getNews, {
+		...filters,
+		keywords: debouncedKeywords
+	})
+
 	const handlePreviousPage = () => {
 		if (filters.page_number > 1) {
 			changeFilter('page_number', filters.page_number - 1)
@@ -42,7 +48,7 @@ export const NewsByFilters: FC<Props> = ({filters, isLoading, news, changeFilter
 				onNextPage={handleNextPage}
 				onPageNumber={handlePageNumber}
 			/>
-			<NewsListWithSkeleton isLoading={isLoading} news={news}/>
+			<NewsListWithSkeleton isLoading={isLoading} news={data?.news}/>
 			<Pagination
 				totalPages={TOTAL_PAGES}
 				currentPage={filters.page_number}
