@@ -1,18 +1,15 @@
-import {FC} from 'react'
 import {BannersListWithSkeleton} from '../banners-list'
-import {BannerType} from '../news-banner'
+import {useFetch} from '../../shared'
+import {getLatestNews} from '../../api'
 
 import styles from './LatestNews.module.scss'
 
-type Props = {
-	banners: BannerType[]
-	isLoading: boolean
-}
+export const LatestNews = () => {
+	const {data, isLoading} = useFetch(getLatestNews)
 
-export const LatestNews: FC<Props> = ({banners, isLoading}) => {
 	return (
 		<section className={styles.section}>
-			<BannersListWithSkeleton banners={banners} isLoading={isLoading}/>
+			<BannersListWithSkeleton banners={data && data.news} isLoading={isLoading}/>
 		</section>
 	)
 }
