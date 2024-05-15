@@ -3,6 +3,7 @@ import {Categories} from '../categories'
 import {Search} from '../search'
 import {FiltersType, useFetch} from '../../shared'
 import {getCategories} from '../../api'
+import {Slider} from '../slider'
 
 import styles from './NewsFilters.module.scss'
 
@@ -16,11 +17,13 @@ export const NewsFilters: FC<Props> = ({filters, changeFilter}) => {
 
 	return (
 		<div className={styles.filters}>
-			{dataCategories ? <Categories
-				categories={dataCategories.categories}
-				selectedCategory={filters.category}
-				setSelectedCategory={(category) => changeFilter('category', category)}
-			/> : null}
+			<Slider>
+				{dataCategories ? <Categories
+					categories={dataCategories.categories}
+					selectedCategory={filters.category}
+					setSelectedCategory={(category) => changeFilter('category', category)}
+				/> : null}
+			</Slider>
 			<Search keywords={filters.keywords} setKeywords={(keywords) => changeFilter('keywords', keywords)}/>
 		</div>
 	)
