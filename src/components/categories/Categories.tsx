@@ -1,4 +1,4 @@
-import {FC} from 'react'
+import {FC, forwardRef} from 'react'
 
 import styles from './Categories.module.scss'
 
@@ -8,9 +8,9 @@ type Props = {
 	setSelectedCategory: (category: string | null) => void
 }
 
-export const Categories: FC<Props> = ({categories, selectedCategory, setSelectedCategory}) => {
+export const Categories: FC<Props> = forwardRef(({categories, selectedCategory, setSelectedCategory}, ref) => {
 	return (
-		<div className={styles.categories}>
+		<div ref={ref} className={styles.categories}>
 			<button
 				className={!selectedCategory ? styles.active : styles.item}
 				onClick={() => setSelectedCategory(null)}
@@ -28,4 +28,4 @@ export const Categories: FC<Props> = ({categories, selectedCategory, setSelected
 			})}
 		</div>
 	)
-}
+})
