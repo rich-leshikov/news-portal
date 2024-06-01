@@ -1,19 +1,8 @@
 import {FC} from 'react'
-import {formatTimeAgo} from '../../shared'
+import {formatTimeAgo, TNewsItem} from '../../shared'
 
 import styles from './NewsItem.module.scss'
 
-export type TNewsItem = {
-	author: string
-	category?: unknown[]
-	description?: string
-	id: string
-	image?: string
-	language?: string
-	published: string
-	title: string
-	url: string
-}
 
 type Props = {
 	item: TNewsItem

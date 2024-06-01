@@ -1,14 +1,14 @@
 import {FC} from 'react'
 import {Categories} from '../categories'
 import {Search} from '../search'
-import {FiltersType, useFetch} from '../../shared'
+import {TFilters, useFetch} from '../../shared'
 import {getCategories} from '../../api'
 import {Slider} from '../slider'
 
 import styles from './NewsFilters.module.scss'
 
 type Props = {
-	filters: FiltersType
+	filters: TFilters
 	changeFilter: (key: string, value: number | string | null) => void
 }
 

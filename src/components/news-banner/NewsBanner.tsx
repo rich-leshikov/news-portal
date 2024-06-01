@@ -1,15 +1,8 @@
 import {FC} from 'react'
-import {formatTimeAgo} from '../../shared'
+import {formatTimeAgo, TBanner} from '../../shared'
 import {Image} from '../image'
 
 import styles from './NewsBanner.module.scss'
-
-export type TBanner = {
-	image: string
-	title: string
-	timePublished: string
-	author: string
-}
 
 type Props = {
 	item: TBanner

@@ -1,14 +1,14 @@
 import {useState} from 'react'
 
-export type FiltersType = {
+export type TFilters = {
 	page_number: number
 	page_size: number
 	category: string | null
 	keywords: string
 }
 
-export const useFilters = (initialFilters: FiltersType) => {
-	const [filters, setFilters] = useState<FiltersType>(initialFilters)
+export const useFilters = (initialFilters: TFilters) => {
+	const [filters, setFilters] = useState<TFilters>(initialFilters)
 
 	const changeFilter = (key: string, value: number | string | null) => {
 		setFilters(prev => ({
