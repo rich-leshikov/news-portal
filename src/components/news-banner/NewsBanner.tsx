@@ -4,7 +4,7 @@ import {Image} from '../image'
 
 import styles from './NewsBanner.module.scss'
 
-export type BannerType = {
+export type TBanner = {
 	image: string
 	title: string
 	timePublished: string
@@ -12,7 +12,7 @@ export type BannerType = {
 }
 
 type Props = {
-	item: BannerType
+	item: TBanner
 }
 
 export const NewsBanner: FC<Props> = ({item}) => {

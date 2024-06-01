@@ -3,7 +3,7 @@ import {formatTimeAgo} from '../../shared'
 
 import styles from './NewsItem.module.scss'
 
-export type NewsItemType = {
+export type TNewsItem = {
 	author: string
 	category?: unknown[]
 	description?: string
@@ -16,7 +16,7 @@ export type NewsItemType = {
 }
 
 type Props = {
-	item: NewsItemType
+	item: TNewsItem
 }
 
 export const NewsItem: FC<Props> = ({item}) => {

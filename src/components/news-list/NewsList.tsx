@@ -1,11 +1,11 @@
 import {FC} from 'react'
-import {NewsItem, NewsItemType} from '../news-item'
+import {NewsItem, TNewsItem} from '../news-item'
 import {withSkeleton} from '../../shared'
 
 import styles from './NewsList.module.scss'
 
 type Props = {
-	news?: NewsItemType[]
+	news?: TNewsItem[]
 }
 
 const NewsList: FC<Props> = ({news}) => {

@@ -5,7 +5,7 @@ import {withSkeleton} from '../../shared'
 import styles from './BannersList.module.scss'
 
 type Props = {
-	banners: BannerType[]
+	banners?: BannerType[]
 }
 
 const BannersList: FC<Props> = ({banners}) => {
