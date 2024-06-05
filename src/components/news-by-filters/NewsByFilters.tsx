@@ -6,7 +6,6 @@ import {TNewsApiResponse, TParams, useDebounce, useFetch, useFilters} from '../.
 import {PaginationWrapper} from '../pagination-wrapper'
 
 import styles from './NewsByFilters.module.scss'
-import {PaginationWrapper} from '../pagination-wrapper';
 
 export const NewsByFilters = () => {
 	const {filters, changeFilter} = useFilters({
