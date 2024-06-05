@@ -1,6 +1,6 @@
 import {FC} from 'react'
-import {NewsItem, TNewsItem} from '../news-item'
-import {withSkeleton} from '../../shared'
+import {NewsItem} from '../news-item'
+import {TNewsItem, withSkeleton} from '../../shared'
 
 import styles from './NewsList.module.scss'
 
@@ -16,4 +16,4 @@ const NewsList: FC<Props> = ({news}) => {
 	)
 }
 
-export const NewsListWithSkeleton = withSkeleton(NewsList, 'item', 10)
+export const NewsListWithSkeleton = withSkeleton(NewsList, 'item', 10, 'column')

@@ -1,11 +1,11 @@
 import {BannersListWithSkeleton} from '../banners-list'
-import {TNewsItemResponse, useFetch} from '../../shared'
+import {TNewsApiResponse, useFetch} from '../../shared'
 import {getLatestNews} from '../../api'
 
 import styles from './LatestNews.module.scss'
 
 export const LatestNews = () => {
-	const {data, isLoading} = useFetch<TNewsItemResponse, null>(getLatestNews)
+	const {data, isLoading} = useFetch<TNewsApiResponse, null>(getLatestNews)
 
 	return (
 		<section className={styles.section}>

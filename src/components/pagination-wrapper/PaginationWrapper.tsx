@@ -1,5 +1,5 @@
 import {FC, ReactNode} from 'react'
-import {Pagination, PaginationProps} from '../pagination'
+import {Pagination, TPaginationProps} from '../pagination'
 
 type Props = {
 	top: boolean
@@ -7,7 +7,7 @@ type Props = {
 	children: ReactNode
 }
 
-export const PaginationWrapper: FC<Props & PaginationProps> = ({top, bottom, children, ...paginationProps}) => {
+export const PaginationWrapper: FC<Props & TPaginationProps> = ({top, bottom, children, ...paginationProps}) => {
 	return (
 		<>
 			{top && <Pagination {...paginationProps}/>}
