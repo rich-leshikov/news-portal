@@ -1,11 +1,5 @@
 import {useState} from 'react'
-
-export type TFilters = {
-	page_number: number
-	page_size: number
-	category: string | null
-	keywords: string
-}
+import {TFilters} from '../types';
 
 export const useFilters = (initialFilters: TFilters) => {
 	const [filters, setFilters] = useState<TFilters>(initialFilters)

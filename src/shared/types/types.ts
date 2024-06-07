@@ -73,8 +73,8 @@ export type TCategoriesApiResponse = {
 export type TFilters = {
 	page_number: number
 	page_size: number
-	category: string | null
-	keywords: string | null
+	category: TCategoriesItem | null
+	keywords: string
 }
 
 export type TParams = Partial<TFilters>

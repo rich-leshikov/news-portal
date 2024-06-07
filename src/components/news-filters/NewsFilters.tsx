@@ -1,7 +1,7 @@
 import {FC} from 'react'
 import {Categories} from '../categories'
 import {Search} from '../search'
-import {TFilters, useFetch} from '../../shared'
+import {TCategoriesApiResponse, TFilters, useFetch} from '../../shared'
 import {getCategories} from '../../api'
 import {Slider} from '../slider'
 
@@ -13,7 +13,7 @@ type Props = {
 }
 
 export const NewsFilters: FC<Props> = ({filters, changeFilter}) => {
-	const {data: dataCategories} = useFetch(getCategories)
+	const {data: dataCategories} = useFetch<TCategoriesApiResponse, null>(getCategories)
 
 	return (
 		<div className={styles.filters}>

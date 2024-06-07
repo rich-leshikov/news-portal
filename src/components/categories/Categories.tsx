@@ -1,14 +1,15 @@
-import {FC, forwardRef} from 'react'
+import {FC, ForwardedRef, forwardRef} from 'react'
+import {TCategoriesItem} from '../../shared'
 
 import styles from './Categories.module.scss'
 
 type Props = {
-	categories: string[]
-	selectedCategory: string | null
-	setSelectedCategory: (category: string | null) => void
+	categories: TCategoriesItem[]
+	selectedCategory: TCategoriesItem | null
+	setSelectedCategory: (category: TCategoriesItem | null) => void
 }
 
-export const Categories: FC<Props> = forwardRef(({categories, selectedCategory, setSelectedCategory}, ref) => {
+export const Categories: FC<Props> = forwardRef(({categories, selectedCategory, setSelectedCategory}, ref: ForwardedRef<HTMLDivElement>) => {
 	return (
 		<div ref={ref} className={styles.categories}>
 			<button
