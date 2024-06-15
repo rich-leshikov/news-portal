@@ -2,8 +2,8 @@ import {FC, ReactNode} from 'react'
 import {Pagination, TPaginationProps} from '../pagination'
 
 type Props = {
-	top: boolean
-	bottom: boolean
+	top?: boolean
+	bottom?: boolean
 	children: ReactNode
 }
 
