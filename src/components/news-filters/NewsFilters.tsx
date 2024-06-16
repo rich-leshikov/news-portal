@@ -22,7 +22,7 @@ export const NewsFilters: FC<Props> = ({filters, changeFilter}) => {
 					categories={dataCategories.categories}
 					selectedCategory={filters.category}
 					setSelectedCategory={(category) => changeFilter('category', category)}
-				/> : null}
+				/> : <></>}
 			</Slider>
 			<Search keywords={filters.keywords} setKeywords={(keywords) => changeFilter('keywords', keywords)}/>
 		</div>
