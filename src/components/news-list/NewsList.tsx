@@ -16,4 +16,4 @@ const NewsList: FC<Props> = ({news}) => {
 	)
 }
 
-export const NewsListWithSkeleton = withSkeleton(NewsList, 'item', 10, 'column')
+export const NewsListWithSkeleton = withSkeleton<Props>(NewsList, 'item', 10, 'column')

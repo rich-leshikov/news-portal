@@ -1,13 +1,19 @@
+import {ComponentType} from 'react'
 import {Skeleton} from '../../components'
+import {TDirection, TSkeleton} from '../types'
 
-export const withSkeleton = (Component: any, type: 'banner' | 'item', count: number, direction: 'row' | 'column') => {
-	return (props: any) => {
+type Props = {
+	isLoading: boolean
+}
+
+export const withSkeleton = <P extends object>(Component: ComponentType<P>, type?: TSkeleton, count?: number, direction?: TDirection) => {
+	return (props: Props & P) => {
 		const {isLoading, ...restProps} = props
 
 		if (isLoading) {
 			return <Skeleton type={type} count={count} direction={direction}/>
 		}
 
-		return <Component {...restProps}/>
+		return <Component {...(restProps as P)}/>
 	}
 }

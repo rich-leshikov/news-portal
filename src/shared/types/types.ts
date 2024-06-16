@@ -70,6 +70,10 @@ export type TCategoriesApiResponse = {
 	status: string
 }
 
+export type TSkeleton = 'banner' | 'item'
+
+export type TDirection = 'row' | 'column'
+
 export type TFilters = {
 	page_number: number
 	page_size: number
@@ -78,11 +82,3 @@ export type TFilters = {
 }
 
 export type TParams = Partial<TFilters>
-
-export type TBanner = {
-	image: string
-	title: string
-	timePublished: string
-	author: string
-}
-

@@ -1,11 +1,11 @@
 import {FC} from 'react'
-import {formatTimeAgo, TBanner} from '../../shared'
+import {formatTimeAgo, TBannerItem} from '../../shared'
 import {Image} from '../image'
 
 import styles from './NewsBanner.module.scss'
 
 type Props = {
-	item: TBanner
+	item: TBannerItem
 }
 
 export const NewsBanner: FC<Props> = ({item}) => {

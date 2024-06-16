@@ -1,11 +1,11 @@
 import {FC} from 'react'
 import {NewsBanner} from '../news-banner'
-import {TBanner, withSkeleton} from '../../shared'
+import {TNewsItem, withSkeleton} from '../../shared'
 
 import styles from './BannersList.module.scss'
 
 type Props = {
-	banners?: TBanner[]
+	banners?: TNewsItem[] | null
 }
 
 const BannersList: FC<Props> = ({banners}) => {
@@ -18,4 +18,4 @@ const BannersList: FC<Props> = ({banners}) => {
 	)
 }
 
-export const BannersListWithSkeleton = withSkeleton(BannersList, 'banner', 12, 'row')
+export const BannersListWithSkeleton = withSkeleton<Props>(BannersList, 'banner', 12, 'row')
