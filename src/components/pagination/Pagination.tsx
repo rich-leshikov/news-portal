@@ -3,6 +3,7 @@ import {FC} from 'react'
 import styles from './Pagination.module.scss'
 
 export type TPaginationProps = {
+	isDark: boolean
 	totalPages: number
 	currentPage: number
 	onPreviousPage: () => void
@@ -10,9 +11,9 @@ export type TPaginationProps = {
 	onPageNumber: (pageNumber: number) => void
 }
 
-export const Pagination: FC<TPaginationProps> = ({totalPages = 10, currentPage, onPreviousPage, onNextPage, onPageNumber}) => {
+export const Pagination: FC<TPaginationProps> = ({isDark, totalPages = 10, currentPage, onPreviousPage, onNextPage, onPageNumber}) => {
 	return (
-		<div className={styles.pagination}>
+		<div className={`${styles.pagination} ${isDark ? styles.dark : styles.light}`}>
 			<button
 				className={styles.arrow}
 				onClick={onPreviousPage}

@@ -1,3 +1,4 @@
+import {FC} from 'react'
 import {NewsListWithSkeleton} from '../news-list'
 import {NewsFilters} from '../news-filters'
 import {getNews} from '../../api'
@@ -7,7 +8,11 @@ import {PaginationWrapper} from '../pagination-wrapper'
 
 import styles from './NewsByFilters.module.scss'
 
-export const NewsByFilters = () => {
+type Props = {
+	isDark: boolean
+}
+
+export const NewsByFilters: FC<Props> = ({isDark}) => {
 	const {filters, changeFilter} = useFilters({
 		page_number: 1,
 		page_size: PAGE_SIZE,
@@ -40,8 +45,9 @@ export const NewsByFilters = () => {
 
 	return (
 		<section className={styles.section}>
-			<NewsFilters filters={filters} changeFilter={changeFilter}/>
+			<NewsFilters isDark={isDark} filters={filters} changeFilter={changeFilter}/>
 			<PaginationWrapper
+				isDark={isDark}
 				top={true}
 				bottom={true}
 				totalPages={TOTAL_PAGES}
