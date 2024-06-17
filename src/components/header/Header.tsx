@@ -1,9 +1,13 @@
 import {formatDate} from '../../shared'
-import {useEffect, useState} from 'react'
+import {FC, useEffect, useState} from 'react'
 
 import styles from './Header.module.scss'
 
-export const Header = () => {
+type Props = {
+	isDark: boolean
+}
+
+export const Header: FC<Props> = ({isDark}) => {
 	const [date, setDate] = useState<string>('')
 
 	useEffect(() => {
@@ -14,7 +18,7 @@ export const Header = () => {
 	})
 
 	return (
-		<header className={styles.header}>
+		<header className={`${styles.header} ${isDark ? styles.dark : styles.light}`}>
 			<h1 className={styles.title}>NEWS</h1>
 			<p className={styles.date}>{date}</p>
 		</header>
