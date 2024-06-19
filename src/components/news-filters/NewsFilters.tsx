@@ -18,7 +18,7 @@ export const NewsFilters: FC<Props> = ({isDark, filters, changeFilter}) => {
 
 	return (
 		<div className={styles.filters}>
-			<Slider>
+			<Slider isDark={isDark}>
 				{dataCategories ? <Categories
 					categories={dataCategories.categories}
 					selectedCategory={filters.category}
