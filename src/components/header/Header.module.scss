@@ -1,18 +1,24 @@
 .header {
   display: flex;
-  flex-direction: column;
-  gap: 12px;
+  justify-content: space-between;
+  align-items: center;
   width: 100%;
   padding: 12px 24px;
   background-color: #fff;
   border-bottom: 1px solid #f2f4f5;
 
-  .title {
-    font-size: 28px;
-  }
+  .info {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
 
-  .date {
-    font-size: 16px;
+    .title {
+      font-size: 28px;
+    }
+
+    .date {
+      font-size: 16px;
+    }
   }
 }
 
