@@ -7,7 +7,7 @@ export const App = () => {
 
 	return (
 		<div className={`app ${isDark ? 'dark' : 'light'}`}>
-			<Header isDark={isDark}/>
+			<Header isDark={isDark} setIsDark={setIsDark}/>
 			<div className="container">
 				<Main isDark={isDark}/>
 			</div>
