@@ -1,13 +1,13 @@
 import {Header} from './components'
 import {Main} from './pages'
-import {useState} from 'react'
+import {useTheme} from './context'
 
 export const App = () => {
-	const [isDark, setIsDark] = useState(true)
+	const {isDark} = useTheme()
 
 	return (
 		<div className={`app ${isDark ? 'dark' : 'light'}`}>
-			<Header isDark={isDark} setIsDark={setIsDark}/>
+			<Header/>
 			<div className="container">
 				<Main isDark={isDark}/>
 			</div>
