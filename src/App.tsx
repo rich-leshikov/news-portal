@@ -9,7 +9,7 @@ export const App = () => {
 		<div className={`app ${isDark ? 'dark' : 'light'}`}>
 			<Header/>
 			<div className="container">
-				<Main isDark={isDark}/>
+				<Main/>
 			</div>
 		</div>
 	)
