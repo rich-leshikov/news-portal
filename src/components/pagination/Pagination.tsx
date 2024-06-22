@@ -1,9 +1,9 @@
 import {FC} from 'react'
+import {useTheme} from '../../context'
 
 import styles from './Pagination.module.scss'
 
 export type TPaginationProps = {
-	isDark: boolean
 	totalPages: number
 	currentPage: number
 	onPreviousPage: () => void
@@ -11,7 +11,9 @@ export type TPaginationProps = {
 	onPageNumber: (pageNumber: number) => void
 }
 
-export const Pagination: FC<TPaginationProps> = ({isDark, totalPages = 10, currentPage, onPreviousPage, onNextPage, onPageNumber}) => {
+export const Pagination: FC<TPaginationProps> = ({totalPages = 10, currentPage, onPreviousPage, onNextPage, onPageNumber}) => {
+	const {isDark} = useTheme()
+
 	return (
 		<div className={`${styles.pagination} ${isDark ? styles.dark : styles.light}`}>
 			<button

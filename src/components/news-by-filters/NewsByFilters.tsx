@@ -8,11 +8,7 @@ import {PaginationWrapper} from '../pagination-wrapper'
 
 import styles from './NewsByFilters.module.scss'
 
-type Props = {
-	isDark: boolean
-}
-
-export const NewsByFilters: FC<Props> = ({isDark}) => {
+export const NewsByFilters: FC = () => {
 	const {filters, changeFilter} = useFilters({
 		page_number: 1,
 		page_size: PAGE_SIZE,
@@ -45,9 +41,8 @@ export const NewsByFilters: FC<Props> = ({isDark}) => {
 
 	return (
 		<section className={styles.section}>
-			<NewsFilters isDark={isDark} filters={filters} changeFilter={changeFilter}/>
+			<NewsFilters filters={filters} changeFilter={changeFilter}/>
 			<PaginationWrapper
-				isDark={isDark}
 				top={true}
 				bottom={true}
 				totalPages={TOTAL_PAGES}

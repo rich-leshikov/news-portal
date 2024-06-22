@@ -3,15 +3,11 @@ import {LatestNews, NewsByFilters} from '../../components'
 
 import styles from './Main.module.scss'
 
-type Props = {
-	isDark: boolean
-}
-
-export const Main: FC<Props> = ({isDark}) => {
+export const Main: FC = () => {
 	return (
 		<main className={styles.main}>
 			<LatestNews/>
-			<NewsByFilters isDark={isDark}/>
+			<NewsByFilters/>
 		</main>
 	)
 }

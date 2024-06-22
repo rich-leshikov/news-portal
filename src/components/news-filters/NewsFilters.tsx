@@ -6,15 +6,16 @@ import {getCategories} from '../../api'
 import {Slider} from '../slider'
 
 import styles from './NewsFilters.module.scss'
+import {useTheme} from '../../context';
 
 type Props = {
-	isDark: boolean
 	filters: TFilters
 	changeFilter: (key: string, value: number | string | null) => void
 }
 
-export const NewsFilters: FC<Props> = ({isDark, filters, changeFilter}) => {
+export const NewsFilters: FC<Props> = ({filters, changeFilter}) => {
 	const {data: dataCategories} = useFetch<TCategoriesApiResponse, null>(getCategories)
+	const {isDark} = useTheme()
 
 	return (
 		<div className={styles.filters}>

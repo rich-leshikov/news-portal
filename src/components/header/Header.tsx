@@ -1,15 +1,13 @@
 import {FC, useEffect, useState} from 'react'
-import {formatDate} from '../../shared'
 import {themeIcons} from '../../assets'
+import {useTheme} from '../../context'
+import {formatDate} from '../../shared'
 
 import styles from './Header.module.scss'
 
-type Props = {
-	isDark: boolean
-	setIsDark: (isDark: boolean) => void
-}
+export const Header: FC = () => {
+	const {isDark, toggleTheme} = useTheme()
 
-export const Header: FC<Props> = ({isDark, setIsDark}) => {
 	const [date, setDate] = useState<string>('')
 
 	useEffect(() => {
@@ -18,8 +16,6 @@ export const Header: FC<Props> = ({isDark, setIsDark}) => {
 			setDate(currentDate)
 		}
 	})
-
-	const onSetIsDark = (isDark: boolean) => setIsDark(!isDark)
 
 	return (
 		<header className={`${styles.header} ${isDark ? styles.dark : styles.light}`}>
@@ -31,7 +27,7 @@ export const Header: FC<Props> = ({isDark, setIsDark}) => {
 				src={isDark ? themeIcons.light : themeIcons.dark}
 				alt="theme icon"
 				width={30}
-				onClick={() => onSetIsDark(isDark)}
+				onClick={toggleTheme}
 			/>
 		</header>
 	)
