@@ -1,6 +1,6 @@
-import {Header} from './components'
-import {Main} from './pages'
-import {useTheme} from './context'
+import {Header} from '../../components'
+import {Main} from '../../pages'
+import {useTheme} from '../../context'
 
 export const App = () => {
 	const {isDark} = useTheme()
