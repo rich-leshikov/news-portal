@@ -11,10 +11,11 @@ import styles from './NewsByFilters.module.scss'
 export const NewsByFilters: FC = () => {
 	const dispatch = useAppDispatch()
 	const filters = useAppSelector(state => state.news.filters)
+	const news = useAppSelector(state => state.news.news)
 
 	const debouncedKeywords = useDebounce(filters.keywords, 1500)
 
-	const {data, isLoading} = useGetNewsQuery({
+	const {isLoading} = useGetNewsQuery({
 		...filters,
 		keywords: debouncedKeywords
 	})
@@ -47,7 +48,7 @@ export const NewsByFilters: FC = () => {
 				onNextPage={handleNextPage}
 				onPageNumber={handlePageNumber}
 			>
-				<NewsListWithSkeleton isLoading={isLoading} news={data?.news}/>
+				<NewsListWithSkeleton isLoading={isLoading} news={news}/>
 			</PaginationWrapper>
 		</section>
 	)
