@@ -24,7 +24,17 @@ export const newsApi = createApi({
 				}
 			},
 		}),
+		getLatestNews: builder.query<TNewsApiResponse, null>({
+			query: () => {
+				return {
+					url: 'latest-news',
+					params: {
+						apiKey: API_KEY
+					}
+				}
+			},
+		}),
 	}),
 })
 
-export const { useGetNewsQuery } = newsApi
+export const { useGetNewsQuery, useGetLatestNewsQuery } = newsApi
