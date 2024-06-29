@@ -1,12 +1,12 @@
 import {FC} from 'react'
 import {Categories} from '../categories'
 import {Search} from '../search'
-import {TCategoriesApiResponse, TFilters, useFetch} from '../../shared'
-import {getCategories} from '../../api'
+import {TFilters} from '../../shared'
 import {Slider} from '../slider'
+import {useTheme} from '../../context'
+import {useGetCategoriesQuery} from '../../app'
 
 import styles from './NewsFilters.module.scss'
-import {useTheme} from '../../context';
 
 type Props = {
 	filters: TFilters
@@ -14,14 +14,14 @@ type Props = {
 }
 
 export const NewsFilters: FC<Props> = ({filters, changeFilter}) => {
-	const {data: dataCategories} = useFetch<TCategoriesApiResponse, null>(getCategories)
+	const {data} = useGetCategoriesQuery(null)
 	const {isDark} = useTheme()
 
 	return (
 		<div className={styles.filters}>
 			<Slider isDark={isDark}>
-				{dataCategories ? <Categories
-					categories={dataCategories.categories}
+				{data ? <Categories
+					categories={data.categories}
 					selectedCategory={filters.category}
 					setSelectedCategory={(category) => changeFilter('category', category)}
 				/> : <></>}
