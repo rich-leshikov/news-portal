@@ -1,47 +1,43 @@
 import {FC} from 'react'
-import {useGetNewsQuery} from '../../app'
+import {setFilters, useAppDispatch, useAppSelector, useGetNewsQuery} from '../../app'
 import {NewsListWithSkeleton} from '../news-list'
 import {NewsFilters} from '../news-filters'
-import {PAGE_SIZE, TOTAL_PAGES} from '../../constants'
-import {useDebounce, useFilters} from '../../shared'
+import {TOTAL_PAGES} from '../../constants'
+import {useDebounce} from '../../shared'
 import {PaginationWrapper} from '../pagination-wrapper'
 
 import styles from './NewsByFilters.module.scss'
 
 export const NewsByFilters: FC = () => {
-	const {filters, changeFilter} = useFilters({
-		page_number: 1,
-		page_size: PAGE_SIZE,
-		category: null,
-		keywords: ''
-	})
+	const dispatch = useAppDispatch()
+	const filters = useAppSelector(state => state.news.filters)
 
 	const debouncedKeywords = useDebounce(filters.keywords, 1500)
 
-	const { data, isLoading } = useGetNewsQuery({
+	const {data, isLoading} = useGetNewsQuery({
 		...filters,
 		keywords: debouncedKeywords
 	})
 
 	const handlePreviousPage = () => {
 		if (filters.page_number > 1) {
-			changeFilter('page_number', filters.page_number - 1)
+			dispatch(setFilters({key: 'page_number', value: filters.page_number - 1}))
 		}
 	}
 
 	const handleNextPage = () => {
 		if (filters.page_number < TOTAL_PAGES) {
-			changeFilter('page_number', filters.page_number + 1)
+			dispatch(setFilters({key: 'page_number', value: filters.page_number + 1}))
 		}
 	}
 
 	const handlePageNumber = (pageNumber: number) => {
-		changeFilter('page_number', pageNumber)
+		dispatch(setFilters({key: 'page_number', value: pageNumber}))
 	}
 
 	return (
 		<section className={styles.section}>
-			<NewsFilters filters={filters} changeFilter={changeFilter}/>
+			<NewsFilters filters={filters}/>
 			<PaginationWrapper
 				top={true}
 				bottom={true}

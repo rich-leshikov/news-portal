@@ -4,16 +4,17 @@ import {Search} from '../search'
 import {TFilters} from '../../shared'
 import {Slider} from '../slider'
 import {useTheme} from '../../context'
-import {useGetCategoriesQuery} from '../../app'
+import {setFilters, useAppDispatch, useGetCategoriesQuery} from '../../app'
 
 import styles from './NewsFilters.module.scss'
 
 type Props = {
 	filters: TFilters
-	changeFilter: (key: string, value: number | string | null) => void
 }
 
-export const NewsFilters: FC<Props> = ({filters, changeFilter}) => {
+export const NewsFilters: FC<Props> = ({filters}) => {
+	const dispatch = useAppDispatch()
+
 	const {data} = useGetCategoriesQuery(null)
 	const {isDark} = useTheme()
 
@@ -23,13 +24,17 @@ export const NewsFilters: FC<Props> = ({filters, changeFilter}) => {
 				{data ? <Categories
 					categories={data.categories}
 					selectedCategory={filters.category}
-					setSelectedCategory={(category) => changeFilter('category', category)}
+					setSelectedCategory={(category) => {
+						dispatch(setFilters({key: 'category', value: category}))
+					}}
 				/> : <></>}
 			</Slider>
 			<Search
 				isDark={isDark}
 				keywords={filters.keywords}
-				setKeywords={(keywords) => changeFilter('keywords', keywords)}
+				setKeywords={(keywords) => {
+					dispatch(setFilters({key: 'keywords', value: keywords}))
+				}}
 			/>
 		</div>
 	)
