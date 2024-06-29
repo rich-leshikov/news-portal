@@ -1,11 +1,13 @@
-import { configureStore } from '@reduxjs/toolkit'
+import {configureStore} from '@reduxjs/toolkit'
 import {useDispatch, useSelector} from 'react-redux'
 import {newsReducer} from './slices'
+import {newsApi} from './services'
 
 export const store = configureStore({
-	// middleware: getDefaultMiddleware => getDefaultMiddleware().concat(baseApi.middleware),
+	middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(newsApi.middleware),
 	reducer: {
-		news: newsReducer
+		news: newsReducer,
+		[newsApi.reducerPath]: newsApi.reducer
 	},
 })
 
