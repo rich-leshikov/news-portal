@@ -1,9 +1,9 @@
 import {FC} from 'react'
+import {useGetNewsQuery} from '../../app'
 import {NewsListWithSkeleton} from '../news-list'
 import {NewsFilters} from '../news-filters'
-import {getNews} from '../../api'
 import {PAGE_SIZE, TOTAL_PAGES} from '../../constants'
-import {TNewsApiResponse, TParams, useDebounce, useFetch, useFilters} from '../../shared'
+import {useDebounce, useFilters} from '../../shared'
 import {PaginationWrapper} from '../pagination-wrapper'
 
 import styles from './NewsByFilters.module.scss'
@@ -18,7 +18,7 @@ export const NewsByFilters: FC = () => {
 
 	const debouncedKeywords = useDebounce(filters.keywords, 1500)
 
-	const {data, isLoading} = useFetch<TNewsApiResponse, TParams>(getNews, {
+	const { data, isLoading } = useGetNewsQuery({
 		...filters,
 		keywords: debouncedKeywords
 	})
