@@ -1,2 +1,1 @@
-export * from './Main.tsx'
-export * from './Main.module.scss'
+export * from './ui'

@@ -1,12 +1,12 @@
 import {FC} from 'react'
-import {setFilters, useAppDispatch, useAppSelector, useGetNewsQuery} from '../../app'
-import {NewsListWithSkeleton} from '../news-list'
-import {NewsFilters} from '../news-filters'
-import {TOTAL_PAGES} from '../../constants'
-import {useDebounce} from '../../shared'
-import {PaginationWrapper} from '../pagination-wrapper'
+import {useAppDispatch, useAppSelector,} from '@/app'
+import {setFilters, useGetNewsQuery} from '@/app/model';
+import {NewsFilters} from '@/pages'
+import { NewsListWithSkeleton, PaginationWrapper} from '@/components'
+import {TOTAL_PAGES} from '@/constants'
+import {useDebounce} from '@/shared'
 
-import styles from './NewsByFilters.module.scss'
+import styles from './styles.module.scss'
 
 export const NewsByFilters: FC = () => {
 	const dispatch = useAppDispatch()

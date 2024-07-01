@@ -1,7 +1,7 @@
 import {FC} from 'react'
-import {LatestNews, NewsByFilters} from '../../components'
+import {LatestNews, NewsByFilters} from '@/pages'
 
-import styles from './Main.module.scss'
+import styles from './styles.module.scss'
 
 export const Main: FC = () => {
 	return (

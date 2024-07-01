@@ -1,6 +1,6 @@
-import {useTheme} from '@/app';
+import {useTheme} from '@/app'
+import {Main} from '@/pages'
 import {Header} from '@/components';
-import {Main} from '@/pages';
 
 export const BaseLayout = () => {
 	const {isDark} = useTheme()

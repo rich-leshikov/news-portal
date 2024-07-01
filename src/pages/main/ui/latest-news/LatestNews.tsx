@@ -1,7 +1,7 @@
-import {BannersListWithSkeleton} from '../banners-list'
+import {BannersListWithSkeleton} from '@/components'
+import {useGetLatestNewsQuery} from '@/app/model';
 
-import styles from './LatestNews.module.scss'
-import {useGetLatestNewsQuery} from '../../app'
+import styles from './styles.module.scss'
 
 export const LatestNews = () => {
 	const { data, isLoading } = useGetLatestNewsQuery(null)

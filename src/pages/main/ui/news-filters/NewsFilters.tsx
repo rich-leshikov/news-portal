@@ -1,12 +1,10 @@
 import {FC} from 'react'
-import {Categories} from '../categories'
-import {Search} from '../search'
-import {TFilters} from '../../shared'
-import {Slider} from '../slider'
-import {useTheme} from '../../context'
-import {setFilters, useAppDispatch, useGetCategoriesQuery} from '../../app'
+import {useAppDispatch, useTheme} from '@/app'
+import {setFilters, useGetCategoriesQuery} from '@/app/model';
+import {Categories, Search, Slider} from '@/components'
+import {TFilters} from '@/shared'
 
-import styles from './NewsFilters.module.scss'
+import styles from './styles.module.scss'
 
 type Props = {
 	filters: TFilters
