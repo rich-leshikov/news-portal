@@ -1,15 +1,13 @@
 import React from 'react'
-import ReactDOM from 'react-dom/client'
 import {Provider} from 'react-redux'
-import {ThemeProvider} from './context'
-import {App, store} from './app'
-import './index.css'
+import ReactDOM from 'react-dom/client'
+import {BaseLayout, store, ThemeProvider} from '@/app'
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
 	<React.StrictMode>
 		<ThemeProvider>
 			<Provider store={store}>
-				<App/>
+				<BaseLayout/>
 			</Provider>
 		</ThemeProvider>
 	</React.StrictMode>,
