@@ -1,8 +1,8 @@
 import {FC} from 'react'
-import {NewsBanner} from '../news-banner'
-import {TNewsItem, withSkeleton} from '../../shared'
+import {NewsBanner} from '@/components'
+import {TNewsItem, withSkeleton} from '@/shared'
 
-import styles from './BannersList.module.scss'
+import styles from './styles.module.scss'
 
 type Props = {
 	banners?: TNewsItem[] | null

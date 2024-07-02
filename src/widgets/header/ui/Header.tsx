@@ -1,9 +1,9 @@
 import {FC, useEffect, useState} from 'react'
-import {themeIcons} from '../../assets'
-import {useTheme} from '../../context'
-import {formatDate} from '../../shared'
+import {useTheme} from '@/app'
+import {themeIcons} from '@/assets'
+import {formatDate} from '@/shared'
 
-import styles from './Header.module.scss'
+import styles from './styles.module.scss'
 
 export const Header: FC = () => {
 	const {isDark, toggleTheme} = useTheme()

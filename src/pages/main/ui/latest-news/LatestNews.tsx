@@ -1,5 +1,5 @@
-import {BannersListWithSkeleton} from '@/components'
 import {useGetLatestNewsQuery} from '@/app/model';
+import {BannersListWithSkeleton} from '@/widgets'
 
 import styles from './styles.module.scss'
 
