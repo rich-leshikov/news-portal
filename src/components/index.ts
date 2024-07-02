@@ -1,7 +1,5 @@
 export * from './categories'
 export * from './image'
-export * from './news-banner'
-export * from './news-item'
 export * from './pagination'
 export * from './pagination-wrapper'
 export * from './search'

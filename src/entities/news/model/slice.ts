@@ -1,7 +1,8 @@
 import {createSlice} from '@reduxjs/toolkit'
 import type {PayloadAction} from '@reduxjs/toolkit'
-import {TFilters, TNewsItem} from '../../../shared'
-import {PAGE_SIZE} from '../../../constants'
+import {PAGE_SIZE} from '@/constants'
+import {TNewsItem} from '@/entities'
+import {TFilters} from '@/shared'
 
 type TState = {
 	news: TNewsItem[],
@@ -18,7 +19,7 @@ const initialState: TState = {
 	}
 }
 
-export const newsSlice = createSlice({
+export const slice = createSlice({
 	name: 'news',
 	initialState,
 	reducers: {
@@ -32,6 +33,6 @@ export const newsSlice = createSlice({
 	},
 })
 
-export const {setNews, setFilters} = newsSlice.actions
+export const {setNews, setFilters} = slice.actions
 
-export const newsReducer = newsSlice.reducer
+export const newsReducer = slice.reducer

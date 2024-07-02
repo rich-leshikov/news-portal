@@ -1,10 +1,11 @@
 import {FC} from 'react'
 import {useAppDispatch, useAppSelector,} from '@/app'
-import {setFilters, useGetNewsQuery} from '@/app/model';
 import {NewsFilters} from '@/pages'
-import { NewsListWithSkeleton, PaginationWrapper} from '@/components'
+import {  PaginationWrapper} from '@/components'
 import {TOTAL_PAGES} from '@/constants'
 import {useDebounce} from '@/shared'
+import {setFilters, useGetNewsQuery} from '@/entities'
+import {NewsListWithSkeleton} from '@/widgets'
 
 import styles from './styles.module.scss'
 

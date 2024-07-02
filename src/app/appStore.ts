@@ -1,10 +1,10 @@
 import {configureStore} from '@reduxjs/toolkit'
 import {useDispatch, useSelector} from 'react-redux'
-import {rootReducer} from '@/app/appReducer.ts'
-import {newsApi} from '@/app/model';
+import {rootReducer} from '@/app'
+import {categoriesApi, newsApi} from '@/entities'
 
 export const store = configureStore({
-	middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(newsApi.middleware),
+	middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(newsApi.middleware, categoriesApi.middleware),
 	reducer: rootReducer,
 })
 

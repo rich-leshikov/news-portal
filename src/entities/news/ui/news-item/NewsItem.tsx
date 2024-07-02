@@ -1,7 +1,8 @@
 import {FC} from 'react'
-import {formatTimeAgo, TNewsItem} from '../../shared'
+import {formatTimeAgo} from '@/shared'
+import {TNewsItem} from '@/entities'
 
-import styles from './NewsItem.module.scss'
+import styles from './styles.module.scss'
 
 
 type Props = {

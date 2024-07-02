@@ -1,8 +1,8 @@
 import {FC} from 'react'
 import {useAppDispatch, useTheme} from '@/app'
-import {setFilters, useGetCategoriesQuery} from '@/app/model';
 import {Categories, Search, Slider} from '@/components'
 import {TFilters} from '@/shared'
+import {setFilters, useGetCategoriesQuery} from '@/entities'
 
 import styles from './styles.module.scss'
 

@@ -1,5 +1,5 @@
 import {ComponentType} from 'react'
-import {Skeleton} from '../../components'
+import {Skeleton} from '@/components'
 import {TDirection, TSkeleton} from '../types'
 
 type Props = {
