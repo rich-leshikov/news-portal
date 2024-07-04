@@ -1,7 +1,7 @@
 import {FC} from 'react'
-import {TDirection, TSkeleton} from '../../shared'
+import {TDirection, TSkeleton} from '@/shared'
 
-import styles from './Skeleton.module.scss'
+import styles from './styles.module.scss'
 
 type Props = {
 	count?: number

@@ -1,6 +1,5 @@
 import {FC} from 'react'
-import {formatTimeAgo} from '@/shared'
-import {Image} from '@/components'
+import {formatTimeAgo, Image} from '@/shared'
 import {TNewsItem} from '@/entities'
 
 import styles from './styles.module.scss'

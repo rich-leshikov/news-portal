@@ -1,7 +1,5 @@
 export * from './categories'
-export * from './image'
 export * from './pagination'
 export * from './pagination-wrapper'
 export * from './search'
-export * from './skeleton'
 export * from './slider'

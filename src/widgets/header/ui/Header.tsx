@@ -1,6 +1,6 @@
 import {FC, useEffect, useState} from 'react'
 import {useTheme} from '@/app'
-import {themeIcons} from '@/assets'
+import {themeIcons} from 'src/shared/assets'
 import {formatDate} from '@/shared'
 
 import styles from './styles.module.scss'

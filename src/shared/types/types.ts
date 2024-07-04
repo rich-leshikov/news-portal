@@ -1,4 +1,4 @@
-import {TCategoriesItem} from '@/entities/category/model';
+import {TCategoriesItem} from '@/entities'
 
 export type TSkeleton = 'banner' | 'item'
 

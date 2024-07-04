@@ -1,6 +1,6 @@
 import {FC} from 'react'
-import {TNewsItem, withSkeleton} from '@/shared'
-import {NewsBanner} from '@/entities'
+import {withSkeleton} from '@/shared'
+import {NewsBanner, TNewsItem} from '@/entities'
 
 import styles from './styles.module.scss'
 

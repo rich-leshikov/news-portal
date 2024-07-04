@@ -1,6 +1,6 @@
 import {createSlice} from '@reduxjs/toolkit'
 import type {PayloadAction} from '@reduxjs/toolkit'
-import {PAGE_SIZE} from '@/constants'
+import {PAGE_SIZE} from 'src/shared/constants'
 import {TNewsItem} from '@/entities'
 import {TFilters} from '@/shared'
 
