@@ -1,11 +1,11 @@
 import {FC} from 'react'
 import {useAppDispatch, useAppSelector,} from '@/app'
 import {NewsFilters} from '@/pages'
-import {  PaginationWrapper} from '@/components'
 import {TOTAL_PAGES} from 'src/shared/constants'
 import {useDebounce} from '@/shared'
 import {setFilters, useGetNewsQuery} from '@/entities'
 import {NewsListWithSkeleton} from '@/widgets'
+import {Pagination} from '@/features'
 
 import styles from './styles.module.scss'
 
@@ -40,7 +40,7 @@ export const NewsByFilters: FC = () => {
 	return (
 		<section className={styles.section}>
 			<NewsFilters filters={filters}/>
-			<PaginationWrapper
+			<Pagination
 				top={true}
 				bottom={true}
 				totalPages={TOTAL_PAGES}
@@ -50,7 +50,7 @@ export const NewsByFilters: FC = () => {
 				onPageNumber={handlePageNumber}
 			>
 				<NewsListWithSkeleton isLoading={isLoading} news={news}/>
-			</PaginationWrapper>
+			</Pagination>
 		</section>
 	)
 }

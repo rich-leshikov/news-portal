@@ -1,7 +1,7 @@
 import {FC, ForwardedRef, forwardRef} from 'react'
-import {TCategoriesItem} from '../../shared'
+import {TCategoriesItem} from '@/entities'
 
-import styles from './Categories.module.scss'
+import styles from './styles.module.scss'
 
 type Props = {
 	categories: TCategoriesItem[]

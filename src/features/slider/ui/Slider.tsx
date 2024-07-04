@@ -1,6 +1,6 @@
 import React, {FC, ReactElement, useRef} from 'react'
 
-import styles from './Slider.module.scss'
+import styles from './styles.module.scss'
 
 type Props = {
 	isDark: boolean
