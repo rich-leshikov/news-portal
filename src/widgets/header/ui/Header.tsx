@@ -1,11 +1,12 @@
 import {FC, useEffect, useState} from 'react'
 import {useTheme} from '@/app'
-import {formatDate, themeIcons} from '@/shared'
+import {formatDate} from '@/shared'
+import {ThemeButton} from '@/features'
 
 import styles from './styles.module.scss'
 
 export const Header: FC = () => {
-	const {isDark, toggleTheme} = useTheme()
+	const {isDark} = useTheme()
 
 	const [date, setDate] = useState<string>('')
 
@@ -22,12 +23,7 @@ export const Header: FC = () => {
 				<h1 className={styles.title}>NEWS</h1>
 				<p className={styles.date}>{date}</p>
 			</div>
-			<img
-				src={isDark ? themeIcons.light : themeIcons.dark}
-				alt="theme icon"
-				width={30}
-				onClick={toggleTheme}
-			/>
+			<ThemeButton/>
 		</header>
 	)
 }
