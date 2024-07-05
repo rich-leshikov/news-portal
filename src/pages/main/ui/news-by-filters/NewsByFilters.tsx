@@ -48,7 +48,7 @@ export const NewsByFilters: FC = () => {
 				onNextPage={handleNextPage}
 				onPageNumber={handlePageNumber}
 			>
-				<NewsListWithSkeleton isLoading={isLoading} news={news}/>
+				<NewsListWithSkeleton isLoading={isLoading} news={news} type={'item'} direction={'column'}/>
 			</Pagination>
 		</section>
 	)

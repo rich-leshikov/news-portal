@@ -1,4 +1,4 @@
-import {BannersListWithSkeleton} from '@/widgets'
+import {NewsListWithSkeleton} from '@/widgets'
 import {useGetLatestNewsQuery} from '@/entities'
 
 import styles from './styles.module.scss'
@@ -8,7 +8,7 @@ export const LatestNews = () => {
 
 	return (
 		<section className={styles.section}>
-			<BannersListWithSkeleton banners={data && data.news} isLoading={isLoading}/>
+			<NewsListWithSkeleton isLoading={isLoading} news={data && data.news} type={'banner'} direction={'row'}/>
 		</section>
 	)
 }

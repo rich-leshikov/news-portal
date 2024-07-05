@@ -1,19 +1,21 @@
 import {FC} from 'react'
-import {withSkeleton} from '@/shared'
-import {NewsItem, TNewsItem} from '@/entities'
+import {TCard, TDirection, withSkeleton} from '@/shared'
+import {NewsCard, TNewsItem} from '@/entities'
 
 import styles from './styles.module.scss'
 
 type Props = {
+	direction?: TDirection
 	news?: TNewsItem[]
+	type?: TCard
 }
 
-const NewsList: FC<Props> = ({news}) => {
+const NewsList: FC<Props> = ({news, type = 'item'}) => {
 	return (
-		<div className={styles.list}>
-			{news?.map(item => <NewsItem key={item.id} item={item}/>)}
+		<div className={`${type === 'item' ? styles.items : styles.banners}`}>
+			{news?.map(item => <NewsCard key={item.id} item={item} type={type}/>)}
 		</div>
 	)
 }
 
-export const NewsListWithSkeleton = withSkeleton<Props>(NewsList, 'item', 10, 'column')
+export const NewsListWithSkeleton = withSkeleton<Props>(NewsList, 10)
