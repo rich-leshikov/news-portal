@@ -2,6 +2,8 @@ import {TCategoriesItem} from '@/entities'
 
 export type TSkeleton = 'banner' | 'item'
 
+export type TCard = TSkeleton
+
 export type TDirection = 'row' | 'column'
 
 export type TFilters = {

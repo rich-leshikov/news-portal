@@ -1,2 +1,1 @@
-export * from './news-banner'
-export * from './news-item'
+export * from './news-card'
