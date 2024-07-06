@@ -1,26 +1,26 @@
 import {FC} from 'react'
 import {useAppDispatch, useTheme} from '@/app'
 import {TFilters} from '@/shared'
-import {setFilters, useGetCategoriesQuery} from '@/entities'
+import {setFilters, TCategoriesItem} from '@/entities'
 import {Categories, Search, Slider} from '@/features'
 
 import styles from './styles.module.scss'
 
 type Props = {
+	categories?: TCategoriesItem[] | null
 	filters: TFilters
 }
 
-export const NewsFilters: FC<Props> = ({filters}) => {
+export const NewsFilters: FC<Props> = ({categories, filters}) => {
 	const dispatch = useAppDispatch()
 
-	const {data} = useGetCategoriesQuery(null)
 	const {isDark} = useTheme()
 
 	return (
 		<div className={styles.filters}>
 			<Slider isDark={isDark}>
-				{data ? <Categories
-					categories={data.categories}
+				{categories ? <Categories
+					categories={categories}
 					selectedCategory={filters.category}
 					setSelectedCategory={(category) => {
 						dispatch(setFilters({key: 'category', value: category}))

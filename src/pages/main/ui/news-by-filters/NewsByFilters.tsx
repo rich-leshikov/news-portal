@@ -1,9 +1,8 @@
 import {FC} from 'react'
 import {useAppDispatch, useAppSelector,} from '@/app'
-import {NewsFilters} from '@/pages'
 import {TOTAL_PAGES, useDebounce} from '@/shared'
-import {setFilters, useGetNewsQuery} from '@/entities'
-import {NewsListWithSkeleton} from '@/widgets'
+import {setFilters, useGetCategoriesQuery, useGetNewsQuery} from '@/entities'
+import {NewsFilters, NewsListWithSkeleton} from '@/widgets'
 import {Pagination} from '@/features'
 
 import styles from './styles.module.scss'
@@ -12,6 +11,7 @@ export const NewsByFilters: FC = () => {
 	const dispatch = useAppDispatch()
 	const filters = useAppSelector(state => state.news.filters)
 	const news = useAppSelector(state => state.news.news)
+	const {data} = useGetCategoriesQuery(null)
 
 	const debouncedKeywords = useDebounce(filters.keywords, 1500)
 
@@ -38,7 +38,7 @@ export const NewsByFilters: FC = () => {
 
 	return (
 		<section className={styles.section}>
-			<NewsFilters filters={filters}/>
+			<NewsFilters categories={data?.categories || []} filters={filters}/>
 			<Pagination
 				top={true}
 				bottom={true}
