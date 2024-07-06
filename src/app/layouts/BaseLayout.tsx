@@ -1,5 +1,5 @@
+import {Outlet} from 'react-router-dom'
 import {useTheme} from '@/app'
-import {Main} from '@/pages'
 import {Header} from '@/widgets'
 
 export const BaseLayout = () => {
@@ -9,7 +9,7 @@ export const BaseLayout = () => {
 		<div className={`app ${isDark ? 'dark' : 'light'}`}>
 			<Header/>
 			<div className="container">
-				<Main/>
+				<Outlet/>
 			</div>
 		</div>
 	)

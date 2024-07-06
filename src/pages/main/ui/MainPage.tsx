@@ -3,7 +3,7 @@ import {LatestNews, NewsByFilters} from '@/pages'
 
 import styles from './styles.module.scss'
 
-export const Main: FC = () => {
+export const MainPage: FC = () => {
 	return (
 		<main className={styles.main}>
 			<LatestNews/>

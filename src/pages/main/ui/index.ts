@@ -1,4 +1,4 @@
 export * from './latest-news'
 export * from './news-by-filters'
 export * from './news-list-with-pagination'
-export * from './Page.tsx'
+export * from './MainPage.tsx'
