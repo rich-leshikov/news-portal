@@ -1,17 +1,15 @@
 import {FC} from 'react'
-import {useAppDispatch, useAppSelector,} from '@/app'
-import {TOTAL_PAGES, useDebounce} from '@/shared'
-import {setFilters, useGetCategoriesQuery, useGetNewsQuery} from '@/entities'
-import {NewsFilters, NewsListWithSkeleton} from '@/widgets'
-import {Pagination} from '@/features'
+import {useGetCategoriesQuery, useGetNewsQuery} from '@/entities'
+import {NewsFilters} from '@/widgets'
+import {NewsListWithPagination} from '@/pages'
+import {useAppSelector} from '@/app'
+import {useDebounce} from '@/shared'
 
 import styles from './styles.module.scss'
 
 export const NewsByFilters: FC = () => {
-	const dispatch = useAppDispatch()
 	const filters = useAppSelector(state => state.news.filters)
 	const news = useAppSelector(state => state.news.news)
-	const {data} = useGetCategoriesQuery(null)
 
 	const debouncedKeywords = useDebounce(filters.keywords, 1500)
 
@@ -20,36 +18,12 @@ export const NewsByFilters: FC = () => {
 		keywords: debouncedKeywords
 	})
 
-	const handlePreviousPage = () => {
-		if (filters.page_number > 1) {
-			dispatch(setFilters({key: 'page_number', value: filters.page_number - 1}))
-		}
-	}
-
-	const handleNextPage = () => {
-		if (filters.page_number < TOTAL_PAGES) {
-			dispatch(setFilters({key: 'page_number', value: filters.page_number + 1}))
-		}
-	}
-
-	const handlePageNumber = (pageNumber: number) => {
-		dispatch(setFilters({key: 'page_number', value: pageNumber}))
-	}
+	const {data} = useGetCategoriesQuery(null)
 
 	return (
 		<section className={styles.section}>
 			<NewsFilters categories={data?.categories || []} filters={filters}/>
-			<Pagination
-				top={true}
-				bottom={true}
-				totalPages={TOTAL_PAGES}
-				currentPage={filters.page_number}
-				onPreviousPage={handlePreviousPage}
-				onNextPage={handleNextPage}
-				onPageNumber={handlePageNumber}
-			>
-				<NewsListWithSkeleton isLoading={isLoading} news={news} type={'item'} direction={'column'}/>
-			</Pagination>
+			<NewsListWithPagination filters={filters} isLoading={isLoading} news={news}/>
 		</section>
 	)
 }
