@@ -14,10 +14,14 @@ export const NewsDetails: FC<Props> = ({item}) => {
 			<Image image={item.image}/>
 
 			<div className={styles.description}>
-				<p>{item.description} ({item.language}) <a href={item.url}>Read more...</a></p>
+				<p>{item.description} ({item.language}) <a href={item.url} target="_blank">Read more...</a></p>
 				<p className={styles.extra}>
 					{formatTimeAgo(item.published)} by {item.author}
 				</p>
+
+				<ul>
+					{item.category?.map(category => <button className={styles.active}>{category}</button>)}
+				</ul>
 			</div>
 		</div>
 	)
