@@ -4,11 +4,13 @@ import {TNewsItem} from '@/entities'
 import {PAGE_SIZE, TFilters} from '@/shared'
 
 type TState = {
+	currentNews: TNewsItem | null
 	news: TNewsItem[],
 	filters: TFilters
 }
 
 const initialState: TState = {
+	currentNews: null,
 	news: [],
 	filters: {
 		page_number: 1,
@@ -29,9 +31,12 @@ export const slice = createSlice({
 			const {key, value} = action.payload
 			state.filters = {...state.filters, [key]: value}
 		},
+		setCurrentNews: (state, action: PayloadAction<TNewsItem | null>) => {
+			state.currentNews = action.payload
+		},
 	},
 })
 
-export const {setNews, setFilters} = slice.actions
+export const {setNews, setFilters, setCurrentNews} = slice.actions
 
 export const newsReducer = slice.reducer
