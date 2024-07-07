@@ -1,4 +1,5 @@
 import {FC, useEffect, useState} from 'react'
+import {Link} from 'react-router-dom'
 import {useTheme} from '@/app'
 import {formatDate} from '@/shared'
 import {ThemeButton} from '@/features'
@@ -20,7 +21,9 @@ export const Header: FC = () => {
 	return (
 		<header className={`${styles.header} ${isDark ? styles.dark : styles.light}`}>
 			<div className={styles.info}>
-				<h1 className={styles.title}>NEWS</h1>
+				<Link to={'/'}>
+					<h1 className={styles.title}>NEWS</h1>
+				</Link>
 				<p className={styles.date}>{date}</p>
 			</div>
 			<ThemeButton/>
